@@ -41,18 +41,18 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 
 
-const store = MongoStore.create({
-    client: mongoose.connection.getClient(),
-//   mongoUrl: dbUrl,
-// collectionName: "sessions",
-    crypto: {
-         secret: process.env.SECRET,
-        },
-    touchAfter: 24 * 3600,
-});
-store.on("error",(err)=>{
-    console.log("ERROR in MONGO SESSION STORE",err);
-});
+// const store = MongoStore.create({
+//     client: mongoose.connection.getClient(),
+// //   mongoUrl: dbUrl,
+// // collectionName: "sessions",
+//     crypto: {
+//          secret: process.env.SECRET,
+//         },
+//     touchAfter: 24 * 3600,
+// });
+// store.on("error",(err)=>{
+//     console.log("ERROR in MONGO SESSION STORE",err);
+// });
 const sessionOptions ={
     // store:store,
     secret:process.env.SECRET,
