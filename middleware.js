@@ -48,14 +48,15 @@ module.exports.validateReview = (req, res, next) => {
 
   if (error) {
     let errMsg = error.details.map((el) => el.message).join(",");
-    return next(new ExpressError(400, errMsg)); // ✅ FIX
-  }
-
-  if (!req.file) {
-    return next(new ExpressError(400, "Image is required")); // ✅ FIX
-  }
+    return next(new ExpressError(400, errMsg)); 
+  }else{
+    
+  // if (!req.file) {
+  //   return next(new ExpressError(400, "Image is required")); 
+  // }
 
   next();
+   }
 };
 
 module.exports.isReviewAuthor = async (req, res, next) => {
