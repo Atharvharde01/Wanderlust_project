@@ -86,9 +86,24 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-// Redirect home page to listings
-app.get("/", (req, res) => {
-    res.redirect("/listings");
+
+// Health check route for monitoring
+app.get("/health", async (req, res) => {
+    try {
+        await mongoose.connection.db.command({ ping: 1 });
+
+        res.status(200).json({
+            status: "OK",
+            database: "connected"
+        });
+    } catch (err) {
+        console.error("Health check failed:", err);
+
+        res.status(503).json({
+            status: "ERROR",
+            database: "disconnected"
+        });
+    }
 });
 
 // 404 middleware

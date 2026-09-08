@@ -149,7 +149,7 @@ Open **http://localhost:8080**
 
 > Add your deployed URL here once available:
 > ```
-> 🔗 https://your-app.onrender.com
+> 🔗https://wanderlust-project-t3z7.onrender.com/listings
 > ```
 
 ---
