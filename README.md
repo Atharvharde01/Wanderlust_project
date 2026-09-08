@@ -157,7 +157,7 @@ Open **http://localhost:8080**
 
 > Add your deployed URL here once available:
 > ```
-> 🔗https://wanderlust-project-t3z7.onrender.com/listings
+> https://wanderlust-project-t3z7.onrender.com/listings
 > ```
 
 ---
