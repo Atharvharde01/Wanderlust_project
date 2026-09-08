@@ -1,8 +1,28 @@
 const Listing = require("../models/listing.js");
 
-module.exports.index=async (req,res)=>{
-const allListings = await Listing.find({});
-res.render("./listings/index.ejs",{allListings});
+module.exports.index = async (req, res) => {
+  // Read and sanitize the search query from the URL (?search=...)
+  let searchQuery = req.query.search ? req.query.search.trim() : "";
+  let filter = {};
+
+  if (searchQuery) {
+    // If the input is a pure number, search by exact price
+    const asNumber = parseFloat(searchQuery);
+    if (!isNaN(asNumber) && String(asNumber) === searchQuery) {
+      filter = { price: asNumber };
+    } else {
+      // Otherwise do a case-insensitive partial match on title and location
+      filter = {
+        $or: [
+          { title:    { $regex: searchQuery, $options: "i" } },
+          { location: { $regex: searchQuery, $options: "i" } },
+        ],
+      };
+    }
+  }
+
+  const allListings = await Listing.find(filter);
+  res.render("./listings/index.ejs", { allListings, searchQuery });
 };
 
 module.exports.renderNewForm = (req,res)=>{

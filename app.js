@@ -82,10 +82,16 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use("/listings",listingRouter);
-app.use("/listings/:id/reviews",reviewRouter);
-app.use("/",userRouter);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
+// Redirect home page to listings
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
+// 404 middleware
 app.use((req,res,next)=>{
     next(new ExpressError(404,"Page Not Found !"));
 });
