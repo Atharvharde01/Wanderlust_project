@@ -72,13 +72,21 @@ Browser → Express Router → Middleware (auth/validation/upload) → Controlle
 
 ## 📸 Screenshots
 
-> Screenshots not yet added. To include them, place images in a `/screenshots` folder:
-> ```markdown
-> ![Listings](./screenshots/index.png)
-> ![Detail](./screenshots/show.png)
-> ```
+### 🏠 Landing Page
+![Landing Page](./screenshots/LandingPage.png)
 
----
+### 🏨 Listings
+![Places](./screenshots/Place.png)
+
+### 🔐 Login
+![Login](./screenshots/Login.png)
+
+### ⭐ Reviews
+![Review](./screenshots/Review.png)
+
+### ✏️ Edit Listing
+![Edit](./screenshots/Edit.png)
+
 
 ## 🔎 Search
 
